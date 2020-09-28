@@ -6,6 +6,14 @@ type taskList struct {
 	tasks []*task
 }
 
+func (t *taskList) agregarALista(tarea *task) {
+	t.tasks = append(t.tasks, tarea)
+}
+
+func (t *taskList) quitarDeLista(indice int) {
+	t.tasks = append(t.tasks[:indice], t.tasks[indice+1:]...)
+}
+
 type task struct {
 	nombre      string
 	descripcion string
@@ -25,15 +33,31 @@ func (t *task) actualizarNombre(nombre string) {
 }
 
 func main() {
-	t := task{
+	t1 := &task{
 		nombre:      "completar mi curso",
 		descripcion: "complesahdkash sdkj dhas kjhdaskjdhaskjdashk",
 		completado:  false,
 	}
-	fmt.Println(t)
-	fmt.Printf("%+v!\n", t)
-	t.marcarCompleta()
-	t.actualizarNombre("final")
-	t.actualizarDescripcion("chacha")
-	fmt.Printf("%+v!\n", t)
+	t2 := &task{
+		nombre:      "completar mi 2",
+		descripcion: "complesahdkash sdkj dhas kjhdaskjdhaskjdashk",
+		completado:  false,
+	}
+	t3 := &task{
+		nombre:      "completar mi 3",
+		descripcion: "complesahdkash sdkj dhas kjhdaskjdhaskjdashk",
+		completado:  false,
+	}
+
+	lista := &taskList{
+		tasks: []*task{
+			t1, t2,
+		},
+	}
+
+	fmt.Println(lista.tasks[0])
+	lista.agregarALista(t3)
+
+	lista.quitarDeLista(1)
+	fmt.Println(len(lista.tasks))
 }
