@@ -60,4 +60,12 @@ func main() {
 
 	lista.quitarDeLista(1)
 	fmt.Println(len(lista.tasks))
+
+	for i := 0; i < len(lista.tasks); i++ {
+		fmt.Println("Index", i, "nombre", lista.tasks[i].nombre)
+	}
+
+	for index, tarea := range lista.tasks {
+		fmt.Println("Index", index, "nombre", tarea.nombre)
+	}
 }
