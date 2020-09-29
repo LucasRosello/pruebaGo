@@ -1,24 +1,23 @@
 package main
 
 import (
-	"fmt"
 	"bufio"
+	"fmt"
 	"os"
-	"strings"
 	"strconv"
+	"strings"
 )
 
-type calc struct{
-	 
+type calc struct {
 }
 
 func (calc) operate(entrada string, operador string) int {
-	
+
 	numeros := strings.Split(entrada, operador)
 	numero0 := Parsear(numeros[0])
 	numero1 := Parsear(numeros[1])
 
-	switch operador{
+	switch operador {
 	case "+":
 		fmt.Println(numero0 + numero1)
 	case "-":
@@ -34,26 +33,21 @@ func (calc) operate(entrada string, operador string) int {
 	return numero0
 }
 
-func Parsear(entrada string) int {
+func parsear(entrada string) int {
 	numero, _ := strconv.Atoi(entrada)
 	return numero
 }
 
-func leerEntrada() string{
+func leerEntrada() string {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	return scanner.Text()
 }
 
-func main()  {
+func main() {
 	entrada := leerEntrada()
 	operador := leerEntrada()
 	c := calc{}
 	fmt.Println(c.operate(entrada, operador))
-
-
-
-
-
 
 }
