@@ -70,4 +70,8 @@ func main() {
 	}
 
 	lista.imprimirListaCompletos()
+
+	mapaTareas := make(map[string]*taskList)
+
+	mapaTareas["Lucas"] = lista
 }
